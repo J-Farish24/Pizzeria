@@ -5,10 +5,11 @@
 <p>Pizza: {{pizza}}</p>
 
 <ul>
-    <li>
+    
         {% for topping in toppings %}
-        <p>{{ topping.name }}</p>
-    </li>
+        <li>
+            <p>{{ topping.name }}</p>
+        </li>
 
     {% empty %}
     <li>There are no toppings for this pizza yet.</li>
