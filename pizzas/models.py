@@ -5,6 +5,9 @@ class Pizza(models.Model):
     name = models.CharField(max_length=50)
     #Sets attribute to current date and timeZone
     date_created = models.DateTimeField(auto_now_add=True)
+    #Stores image for a Pizza object
+    image = models.ImageField(null=True, blank=True, upload_to='images/')
+
 
     def __str__(self):
         return self.name

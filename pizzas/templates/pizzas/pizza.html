@@ -1,11 +1,14 @@
 {% extends "pizzas/base.html" %}
 
+{% block page_header %}
+{{pizza}} Pizza
+{% endblock page_header %}
 {% block content %}
 
-<p>Pizza: {{pizza}}</p>
 
 <ul>
-    
+        <img src="{{ pizza.image.url }}">
+        <br/><br/>
         {% for topping in toppings %}
         <li>
             <p>{{ topping.name }}</p>
