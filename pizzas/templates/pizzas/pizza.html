@@ -5,21 +5,48 @@
 {% endblock page_header %}
 {% block content %}
 
-
+<style>
+    .left{
+        float:left;
+    }
+    .right{
+        float:right;
+    }
+</style>
 <ul>
-        {% if pizza.image %}
-            <img src="{{ pizza.image.url }}">
-            <br/><br/>
-        {% endif %}
+    {% if pizza.image %}
+        <img src="{{ pizza.image.url }}">
+        <br/><br/>
+    {% endif %}
 
-        {% for topping in toppings %}
-        <li>
-            <p>{{ topping.name }}</p>
-        </li>
+    {% for topping in toppings %}
+    <li>
+        <p>{{ topping.name }}</p>
+    </li>
 
     {% empty %}
     <li>There are no toppings for this pizza yet.</li>
-    {% endfor %}
-
+    {% endfor %} 
 </ul>
+<p>        
+    {% for comment in comments.all %}
+    <div class="card mb-3">
+            <hgroup class="card-header">
+                    <div class = "left">
+                        <h5>{{comment.name}}</h5>
+                    </div>
+                    <div class = "right">
+                        <h5>{{comment.date_created|date:'M d, Y H:i' }}</h5>
+                    </div>
+            </hgroup>
+            <div class="card-body">
+                {{ comment.text|linebreaks }}
+            </div>
+        </div></p>
+    {% empty %}
+    <h5>There are no comments for this pizza yet</h5>
+    {% endfor %}
+<p>
+    <a href="{% url 'pizzas:new_comment' pizza.id %}">Add a comment</a>
+</p>
 {% endblock content %}
