@@ -1,7 +1,7 @@
 {% extends "pizzas/base.html" %}
 
 {% block page_header %}
-{{pizza}} Pizza
+<h1>{{pizza}} Pizza</h1>
 {% endblock page_header %}
 {% block content %}
 
@@ -12,6 +12,10 @@
     .right{
         float:right;
     }
+    img {
+        width: 300px;
+        height: 300px;
+    }
 </style>
 <ul>
     {% if pizza.image %}
@@ -21,13 +25,14 @@
 
     {% for topping in toppings %}
     <li>
-        <p>{{ topping.name }}</p>
+        <h3>{{ topping.name }}</h3>
     </li>
 
     {% empty %}
     <li>There are no toppings for this pizza yet.</li>
     {% endfor %} 
 </ul>
+
 <p>        
     {% for comment in comments.all %}
     <div class="card mb-3">
@@ -46,7 +51,7 @@
     {% empty %}
     <h5>There are no comments for this pizza yet</h5>
     {% endfor %}
-<p>
-    <a href="{% url 'pizzas:new_comment' pizza.id %}">Add a comment</a>
-</p>
+    <p>
+        <a href="{% url 'pizzas:new_comment' pizza.id %}">Add a comment</a>
+    </p>
 {% endblock content %}
