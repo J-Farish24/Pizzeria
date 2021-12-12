@@ -22,17 +22,17 @@
         <img src="{{ pizza.image.url }}">
         <br/><br/>
     {% endif %}
-
+    <h2>Toppings</h2>
     {% for topping in toppings %}
     <li>
-        <h3>{{ topping.name }}</h3>
+        <h5>{{ topping.name }}</h5>
     </li>
 
     {% empty %}
     <li>There are no toppings for this pizza yet.</li>
     {% endfor %} 
 </ul>
-
+<h2>Comments</h2>
 <p>        
     {% for comment in comments.all %}
     <div class="card mb-3">
