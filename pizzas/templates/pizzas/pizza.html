@@ -7,8 +7,11 @@
 
 
 <ul>
-        <img src="{{ pizza.image.url }}">
-        <br/><br/>
+        {% if pizza.image %}
+            <img src="{{ pizza.image.url }}">
+            <br/><br/>
+        {% endif %}
+
         {% for topping in toppings %}
         <li>
             <p>{{ topping.name }}</p>
